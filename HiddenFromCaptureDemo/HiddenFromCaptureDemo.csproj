@@ -6,6 +6,12 @@
     <Nullable>enable</Nullable>
     <Platforms>x64</Platforms>
     <PlatformTarget>x64</PlatformTarget>
+    <AssemblyName>V3</AssemblyName>
+    <Title>V3</Title>
+    <Product>V3</Product>
+    <Company></Company>
+    <FileVersion>1.0.0.0</FileVersion>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
