@@ -5,33 +5,34 @@
         Title="HiddenFromCapture Demo"
         Height="480" Width="640"
         WindowStartupLocation="CenterScreen"
-        WindowStyle="SingleBorderWindow"
+        ShowInTaskbar="False"
+        WindowStyle="None"
+        ResizeMode="NoResize"
         Background="#FFFFFFFF">
+  <Grid Margin="16">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="*"/>
+      <RowDefinition Height="Auto"/>
+    </Grid.RowDefinitions>
 
-    <Grid Margin="16">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
+    <!-- 상단 설명(필요 없으면 지워도 됨) -->
+    <StackPanel Grid.Row="0" Margin="0,0,0,12">
+      <TextBlock Text="보호된 영역(OBS/디스플레이 캡처 차단)" FontSize="18" FontWeight="Bold"/>
+      <TextBlock Text="작업표시줄/Alt+Tab 숨김, 전역 핫키: Ctrl+Alt+Q 종료"/>
+    </StackPanel>
 
-        <!-- 상단 설명 -->
-        <StackPanel Grid.Row="0" Margin="0,0,0,12">
-            <TextBlock Text="공유에서 숨김 데모" FontSize="20" FontWeight="Bold"/>
-            <TextBlock Text="아래 영역은 NativeDX Protected SwapChain 으로 그려집니다."/>
-        </StackPanel>
+    <!-- ▶ Protected SwapChain 표시 영역 -->
+    <Border Grid.Row="1" BorderBrush="#DDD" BorderThickness="1"
+            HorizontalAlignment="Center" VerticalAlignment="Center"
+            Width="640" Height="360">
+      <local:ProtectedHost/>
+    </Border>
 
-        <!-- 보호 영역 -->
-        <Border Grid.Row="1" BorderBrush="Gray" BorderThickness="1"
-                HorizontalAlignment="Center" VerticalAlignment="Center"
-                Width="640" Height="360">
-            <local:ProtectedHost/>
-        </Border>
-
-        <!-- 하단 버튼 -->
-        <StackPanel Grid.Row="2" Orientation="Horizontal"
-                    HorizontalAlignment="Right" Margin="0,12,0,0">
-            <Button x:Name="btnClose" Width="80" Click="BtnClose_Click">닫기</Button>
-        </StackPanel>
-    </Grid>
+    <!-- 하단: 닫기 버튼(선택) -->
+    <StackPanel Grid.Row="2" Orientation="Horizontal"
+                HorizontalAlignment="Right" Margin="0,12,0,0">
+      <Button x:Name="btnClose" Width="80" Click="BtnClose_Click">닫기</Button>
+    </StackPanel>
+  </Grid>
 </Window>

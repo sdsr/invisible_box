@@ -6,15 +6,24 @@ namespace HiddenFromCaptureDemo
 {
     public class ProtectedHost : HwndHost
     {
-        [DllImport("ProtectedSwapChain.dll", CharSet = CharSet.Unicode)]
+        [DllImport("ProtectedSwapChain.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr CreateProtectedWindow(IntPtr parent);
+
+        [DllImport("user32.dll", SetLastError = true)]
+        private static extern bool DestroyWindow(IntPtr hWnd);
+
+        private IntPtr hwndChild;
 
         protected override HandleRef BuildWindowCore(HandleRef hwndParent)
         {
-            IntPtr hwnd = CreateProtectedWindow(hwndParent.Handle);
-            return new HandleRef(this, hwnd);
+            hwndChild = CreateProtectedWindow(hwndParent.Handle);
+            return new HandleRef(this, hwndChild);
         }
 
-        protected override void DestroyWindowCore(HandleRef hwnd) {}
+        protected override void DestroyWindowCore(HandleRef hwnd)
+        {
+            if (hwnd.Handle != IntPtr.Zero)
+                DestroyWindow(hwnd.Handle);
+        }
     }
 }
