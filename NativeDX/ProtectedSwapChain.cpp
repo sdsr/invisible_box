@@ -7,14 +7,14 @@
 extern "C" __declspec(dllexport)
 HWND CreateProtectedWindow(HWND parent)
 {
-    // ÀÚ½Ä À©µµ¿ì »ı¼º (W ¹öÀü API »ç¿ë)
+    // ìì‹ ìœˆë„ìš° ìƒì„± (W ë²„ì „ API ì‚¬ìš©)
     HWND hwnd = CreateWindowExW(
         0, L"STATIC", L"ProtectedArea",
         WS_CHILD | WS_VISIBLE,
         0, 0, 640, 360,
         parent, nullptr, GetModuleHandleW(NULL), nullptr);
 
-    // Direct3D 11 µğ¹ÙÀÌ½º »ı¼º
+    // Direct3D 11 ë””ë°”ì´ìŠ¤ ìƒì„±
     ID3D11Device* device = nullptr;
     ID3D11DeviceContext* context = nullptr;
     D3D_FEATURE_LEVEL fl;
@@ -33,7 +33,7 @@ HWND CreateProtectedWindow(HWND parent)
     IDXGIFactory2* factory;
     adapter->GetParent(__uuidof(IDXGIFactory2), (void**)&factory);
 
-    // Protected SwapChain »ı¼º
+    // Protected SwapChain ìƒì„±
     DXGI_SWAP_CHAIN_DESC1 desc = {};
     desc.Width = 640;
     desc.Height = 360;
@@ -42,14 +42,14 @@ HWND CreateProtectedWindow(HWND parent)
     desc.BufferUsage = DXGI_USAGE_RENDER_TARGET_OUTPUT;
     desc.BufferCount = 2;
     desc.SwapEffect = DXGI_SWAP_EFFECT_FLIP_SEQUENTIAL;
-    desc.Flags = DXGI_SWAP_CHAIN_FLAG_HW_PROTECTED; // ÇÙ½É
+    desc.Flags = DXGI_SWAP_CHAIN_FLAG_HW_PROTECTED; // í•˜ë“œì›¨ì–´ ë³´í˜¸
 
     IDXGISwapChain1* swapChain;
     HRESULT hr = factory->CreateSwapChainForHwnd(
         device, hwnd, &desc, nullptr, nullptr, &swapChain);
 
     if (FAILED(hr)) {
-        MessageBoxW(hwnd, L"Protected SwapChain »ı¼º ½ÇÆĞ", L"Error", MB_OK);
+        MessageBoxW(hwnd, L"Protected SwapChain ìƒì„± ì‹¤íŒ¨", L"Error", MB_OK);
     }
 
     return hwnd;
