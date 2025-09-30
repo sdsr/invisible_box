@@ -20,6 +20,37 @@ struct Renderer {
 
 static LRESULT CALLBACK HostWndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
+    if (msg == WM_SIZE)
+    {
+        Renderer* r = reinterpret_cast<Renderer*>(GetWindowLongPtrW(hWnd, GWLP_USERDATA));
+        if (r && r->swap && r->ctx)
+        {
+            // 렌더 일시 정지
+            r->running = false;
+            if (r->thread)
+            {
+                WaitForSingleObject(r->thread, 2000);
+                CloseHandle(r->thread);
+                r->thread = nullptr;
+            }
+            if (r->rtv) { r->rtv->Release(); r->rtv = nullptr; }
+
+            // 버퍼 리사이즈
+            r->swap->ResizeBuffers(0, 0, 0, DXGI_FORMAT_UNKNOWN, 0);
+
+            // RTV 재생성
+            ID3D11Texture2D* back = nullptr;
+            if (SUCCEEDED(r->swap->GetBuffer(0, __uuidof(ID3D11Texture2D), (void**)&back)))
+            {
+                r->device->CreateRenderTargetView(back, nullptr, &r->rtv);
+                back->Release();
+            }
+
+            // 렌더 재개
+            r->thread = CreateThread(nullptr, 0, RenderThread, r, 0, nullptr);
+        }
+        return 0;
+    }
     if (msg == WM_NCDESTROY) {
         Renderer* r = reinterpret_cast<Renderer*>(GetWindowLongPtrW(hWnd, GWLP_USERDATA));
         if (r) {

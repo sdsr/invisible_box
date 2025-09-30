@@ -2,6 +2,7 @@ using System;
 using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Interop;
+using System.Windows.Input;
 
 namespace HiddenFromCaptureDemo
 {
@@ -37,6 +38,22 @@ namespace HiddenFromCaptureDemo
         private const uint WDA_MONITOR = 0x00000001;
         private const uint WDA_EXCLUDEFROMCAPTURE = 0x00000011; // Win10 2004+
 
+        // WinEvent 훅으로 새 창에도 WDA 적용
+        private delegate void WinEventDelegate(IntPtr hWinEventHook, uint eventType, IntPtr hwnd, int idObject, int idChild, uint dwEventThread, uint dwmsEventTime);
+        [DllImport("user32.dll")]
+        private static extern IntPtr SetWinEventHook(uint eventMin, uint eventMax, IntPtr hmodWinEventProc, WinEventDelegate lpfnWinEventProc, uint idProcess, uint idThread, uint dwFlags);
+        [DllImport("user32.dll")]
+        private static extern bool UnhookWinEvent(IntPtr hWinEventHook);
+        private const uint EVENT_OBJECT_SHOW = 0x8002;
+        private const uint WINEVENT_OUTOFCONTEXT = 0;
+        private IntPtr _hook;
+        private WinEventDelegate _hookDelegate;
+
+        // 프라이버시 모드 토글(Ctrl+Alt+P)
+        private const int HOTKEY_PRIVACY = 9001;
+        private const uint VK_P = 0x50;
+        private bool _privacyMode = false;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -48,9 +65,14 @@ namespace HiddenFromCaptureDemo
                 var hwnd = new WindowInteropHelper(this).Handle;
                 if (hwnd != IntPtr.Zero)
                     SetWindowDisplayAffinity(hwnd, WDA_EXCLUDEFROMCAPTURE);
+                // 팝업/Owned HWND에도 자동 적용
+                _hookDelegate = OnWinEvent;
+                _hook = SetWinEventHook(EVENT_OBJECT_SHOW, EVENT_OBJECT_SHOW, IntPtr.Zero, _hookDelegate, 0, 0, WINEVENT_OUTOFCONTEXT);
                 RegisterGlobalHotkey();   // Ctrl+Alt+Q 종료
+                RegisterPrivacyHotkey();  // Ctrl+Alt+P 프라이버시 모드
             };
             this.Closed += (_, __) => UnregisterGlobalHotkey();
+            this.Closed += (_, __) => { if (_hook != IntPtr.Zero) UnhookWinEvent(_hook); };
         }
 
         private void ApplyToolWindowStyle()
@@ -72,6 +94,13 @@ namespace HiddenFromCaptureDemo
             RegisterHotKey(helper.Handle, HOTKEY_ID, MOD_CONTROL | MOD_ALT, VK_Q);
         }
 
+        private void RegisterPrivacyHotkey()
+        {
+            var helper = new WindowInteropHelper(this);
+            HwndSource source = HwndSource.FromHwnd(helper.Handle);
+            RegisterHotKey(helper.Handle, HOTKEY_PRIVACY, MOD_CONTROL | MOD_ALT, VK_P);
+        }
+
         private void UnregisterGlobalHotkey()
         {
             var helper = new WindowInteropHelper(this);
@@ -86,7 +115,29 @@ namespace HiddenFromCaptureDemo
                 Application.Current.Shutdown();
                 handled = true;
             }
+            else if (msg == WM_HOTKEY && wParam.ToInt32() == HOTKEY_PRIVACY)
+            {
+                _privacyMode = !_privacyMode;
+                // 프라이버시 모드: 창 숨김/표시 토글 (간단 구현)
+                if (_privacyMode) this.Hide(); else this.Show();
+                handled = true;
+            }
             return IntPtr.Zero;
+        }
+
+        // 드래그로 이동 지원(무테 창)
+        private void RootGrid_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ButtonState == MouseButtonState.Pressed)
+                this.DragMove();
+        }
+
+        // WinEvent 콜백: 새로 나타난 창에 WDA 적용
+        private void OnWinEvent(IntPtr hWinEventHook, uint eventType, IntPtr hwnd, int idObject, int idChild, uint dwEventThread, uint dwmsEventTime)
+        {
+            if (eventType != EVENT_OBJECT_SHOW) return;
+            if (hwnd == IntPtr.Zero) return;
+            SetWindowDisplayAffinity(hwnd, WDA_EXCLUDEFROMCAPTURE);
         }
 
         private void BtnClose_Click(object sender, RoutedEventArgs e) => Close();
