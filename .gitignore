@@ -1,9 +1,10 @@
 # Build results
-bin/
-obj/
+**/bin/
+**/obj/
+**/x64/
 
 # Visual Studio cache
-.vs/
+**/.vs/
 *.user
 *.suo
 *.ipch
