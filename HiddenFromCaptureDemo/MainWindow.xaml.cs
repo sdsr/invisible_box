@@ -30,6 +30,13 @@ namespace HiddenFromCaptureDemo
         private const uint MOD_ALT = 0x0001;
         private const uint VK_Q = 0x51; // 'Q'
 
+        // 화면 캡처 제외 설정 API
+        [DllImport("user32.dll")]
+        private static extern bool SetWindowDisplayAffinity(IntPtr hWnd, uint dwAffinity);
+        private const uint WDA_NONE = 0x00000000;
+        private const uint WDA_MONITOR = 0x00000001;
+        private const uint WDA_EXCLUDEFROMCAPTURE = 0x00000011; // Win10 2004+
+
         public MainWindow()
         {
             InitializeComponent();
@@ -37,6 +44,10 @@ namespace HiddenFromCaptureDemo
             this.SourceInitialized += (_, __) =>
             {
                 ApplyToolWindowStyle();   // 작업표시줄/Alt+Tab 숨김
+                // 최상위 창을 화면 캡처에서 제외
+                var hwnd = new WindowInteropHelper(this).Handle;
+                if (hwnd != IntPtr.Zero)
+                    SetWindowDisplayAffinity(hwnd, WDA_EXCLUDEFROMCAPTURE);
                 RegisterGlobalHotkey();   // Ctrl+Alt+Q 종료
             };
             this.Closed += (_, __) => UnregisterGlobalHotkey();

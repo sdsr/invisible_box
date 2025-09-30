@@ -78,6 +78,13 @@ HWND CreateProtectedWindow(HWND parent)
 
     if (!hwnd) return nullptr;
 
+    // 자식 창을 화면 캡처에서 제외 (Windows 10 2004+)
+    {
+        // user32 선언은 포함되어 있으므로 직접 선언 없이 호출
+        const UINT WDA_EXCLUDEFROMCAPTURE = 0x00000011;
+        SetWindowDisplayAffinity(hwnd, WDA_EXCLUDEFROMCAPTURE);
+    }
+
     // 3) D3D11 디바이스/컨텍스트 생성
     ID3D11Device* device = nullptr;
     ID3D11DeviceContext* ctx = nullptr;

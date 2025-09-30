@@ -5,11 +5,33 @@
     <UseWPF>true</UseWPF>
     <Nullable>enable</Nullable>
     <Platforms>x64</Platforms>
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
 
   <!-- NativeDX DLL을 WPF 실행 폴더로 자동 복사 -->
-  <ItemGroup>
-    <None Update="..\NativeDX\x64\$(Configuration)\ProtectedSwapChain.dll">
+  <ItemGroup Condition="Exists('..\x64\$(Configuration)\ProtectedSwapChain.dll')">
+    <None Update="..\x64\$(Configuration)\ProtectedSwapChain.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <!-- NativeDX DLL을 WPF 실행 폴더로 자동 복사 (두 위치 중 존재하는 쪽) -->
+  <ItemGroup Condition="Exists('$(MSBuildThisFileDirectory)..\\x64\\$(Configuration)\\ProtectedSwapChain.dll')">
+    <None Include="$(MSBuildThisFileDirectory)..\\x64\\$(Configuration)\\ProtectedSwapChain.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup Condition="Exists('$(MSBuildThisFileDirectory)..\\NativeDX\\x64\\$(Configuration)\\ProtectedSwapChain.dll')">
+    <None Include="$(MSBuildThisFileDirectory)..\\NativeDX\\x64\\$(Configuration)\\ProtectedSwapChain.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

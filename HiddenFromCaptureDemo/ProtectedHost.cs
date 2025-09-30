@@ -17,6 +17,8 @@ namespace HiddenFromCaptureDemo
         protected override HandleRef BuildWindowCore(HandleRef hwndParent)
         {
             hwndChild = CreateProtectedWindow(hwndParent.Handle);
+            if (hwndChild == IntPtr.Zero)
+                throw new InvalidOperationException("보호 스왑체인 호스트 윈도우 생성 실패");
             return new HandleRef(this, hwndChild);
         }
 
