@@ -1,2 +1,13 @@
+# Build results
+bin/
+obj/
+
+# Visual Studio cache
 .vs/
+*.user
+*.suo
 *.ipch
+
+# 기타
+*.log
+*.tmp
