@@ -1,9 +1,0 @@
-C:\Users\DONGIN\Desktop\invisible\invisible\obj\Release\net6.0-windows\MainWindow.baml
-C:\Users\DONGIN\Desktop\invisible\invisible\obj\Release\net6.0-windows\MainWindow.g.cs
-C:\Users\DONGIN\Desktop\invisible\invisible\obj\Release\net6.0-windows\App.g.cs
-C:\Users\DONGIN\Desktop\invisible\invisible\obj\Release\net6.0-windows\HiddenFromCaptureDemo_MarkupCompile.cache
-C:\Users\DONGIN\Desktop\invisible\invisible\obj\Release\net6.0-windows\HiddenFromCaptureDemo.g.resources
-C:\Users\DONGIN\Desktop\invisible\invisible\obj\Release\net6.0-windows\HiddenFromCaptureDemo.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\DONGIN\Desktop\invisible\invisible\obj\Release\net6.0-windows\HiddenFromCaptureDemo.AssemblyInfoInputs.cache
-C:\Users\DONGIN\Desktop\invisible\invisible\obj\Release\net6.0-windows\HiddenFromCaptureDemo.AssemblyInfo.cs
-C:\Users\DONGIN\Desktop\invisible\invisible\obj\Release\net6.0-windows\HiddenFromCaptureDemo.csproj.CoreCompileInputs.cache
