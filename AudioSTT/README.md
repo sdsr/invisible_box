@@ -130,6 +130,47 @@ AudioSTT/
 └── README.md           # 이 문서
 ```
 
+## 파일 기반 테스트 (권장)
+
+오디오/비디오 파일로 먼저 테스트해 보세요!
+
+### 1. 테스트용 라이브러리 설치
+```bash
+# 가장 간단 (오디오 전용)
+pip install librosa
+
+# 또는 비디오 지원 (ffmpeg 필요)
+pip install pydub moviepy
+```
+
+### 2. 파일 테스트 실행
+```bash
+# 기본 실행
+python test_file.py your_audio.mp3
+
+# 다양한 옵션
+python test_file.py video.mp4 --model small --language ko --verbose
+
+# 결과를 파일로 저장
+python test_file.py audio.wav --output result.txt
+```
+
+### 지원 포맷
+- 오디오: mp3, wav, flac, ogg, m4a 등
+- 비디오: mp4, avi, mov, mkv 등 (자동으로 오디오 추출)
+
+### 사용 예시
+```bash
+# YouTube 다운로드 파일 테스트
+python test_file.py "downloaded_video.mp4" --model base --language ko
+
+# 영어 팟캐스트
+python test_file.py podcast.mp3 --model small --language en
+
+# 고품질 변환
+python test_file.py interview.wav --model medium --output transcript.txt
+```
+
 ## 모듈 개별 테스트
 
 ### 오디오 캡처 테스트
