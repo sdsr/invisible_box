@@ -40,7 +40,32 @@ pip install torch torchvision torchaudio
 
 ## 사용 방법
 
-### 오디오 디바이스 확인
+### 방법 1: 자동 PC 오디오 캡처 (권장, Windows 전용)
+
+**스테레오 믹스 활성화 불필요!** WASAPI 루프백으로 자동 캡처
+
+```bash
+# 1. pyaudiowpatch 설치
+pip install pyaudiowpatch
+
+# 2. 실행 (PC 스피커 출력 자동 캡처)
+python main_loopback.py
+
+# 영어로
+python main_loopback.py --language en
+
+# 빠른 모델
+python main_loopback.py --model tiny --language en
+
+# 30초 청크
+python main_loopback.py --chunk-duration 30.0 --stride 10.0 --language en
+```
+
+PC에서 YouTube, 음악, 게임 등 소리를 재생하면 자동으로 인식합니다.
+
+### 방법 2: 수동 디바이스 선택 (크로스 플랫폼)
+
+#### 오디오 디바이스 확인
 
 ```bash
 python main.py --list-devices
