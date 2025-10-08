@@ -15,14 +15,18 @@ def main():
     parser.add_argument("--model", default="base", 
                        choices=["tiny", "base", "small", "medium", "large"],
                        help="Whisper 모델 크기")
-    parser.add_argument("--language", default="ko", 
-                       help="인식 언어 코드 (ko, en 등)")
+    parser.add_argument("--language", default=None, 
+                       help="인식 언어 코드 (ko, en 등). None이면 자동 감지")
     parser.add_argument("--chunk-duration", type=float, default=5.0,
                        help="변환할 오디오 청크 길이 (초)")
-    parser.add_argument("--stride", type=float, default=2.0,
-                       help="청크 간 이동 간격 (초)")
+    parser.add_argument("--stride", type=float, default=None,
+                       help="청크 간 이동 간격 (초, 기본값은 chunk-duration과 동일)")
     
     args = parser.parse_args()
+    
+    # stride 기본값 설정 (chunk와 동일하게)
+    if args.stride is None:
+        args.stride = args.chunk_duration
     
     # STT 엔진 초기화
     print(f"\nWhisper STT 엔진 초기화 (모델: {args.model}, 언어: {args.language})")
@@ -60,6 +64,7 @@ def main():
     try:
         sample_count = 0
         last_process_count = 0
+        last_text = ""  # 중복 텍스트 필터링용
         
         while True:
             # 오디오 블록 읽기
@@ -94,9 +99,44 @@ def main():
                 elapsed = time.time() - start_time
                 
                 if text:
-                    print(f"({elapsed:.2f}초)")
-                    print(f"  >> {text}")
-                    print("-" * 60)
+                    # stride == chunk인 경우 중복 없이 모두 출력
+                    # stride < chunk인 경우에만 중복 제거 로직 적용
+                    if args.stride >= args.chunk_duration:
+                        # 겹침 없음 - 모두 출력
+                        print(f"({elapsed:.2f}초)")
+                        print(f"  >> {text}")
+                        print("-" * 60)
+                    else:
+                        # 겹침 있음 - 유사도 기반 중복 제거
+                        if last_text:
+                            # 간단한 유사도 체크: 공통 단어 비율
+                            last_words = set(last_text.lower().split())
+                            current_words = set(text.lower().split())
+                            
+                            if len(current_words) > 0:
+                                common = last_words & current_words
+                                similarity = len(common) / len(current_words)
+                                
+                                # 70% 이상 겹치면 중복으로 간주 (건너뜀)
+                                if similarity > 0.7:
+                                    # 중복이므로 출력 안 함
+                                    pass
+                                else:
+                                    # 새로운 내용
+                                    print(f"({elapsed:.2f}초)")
+                                    print(f"  >> {text}")
+                                    print("-" * 60)
+                            else:
+                                print(f"({elapsed:.2f}초)")
+                                print(f"  >> {text}")
+                                print("-" * 60)
+                        else:
+                            # 첫 번째 출력
+                            print(f"({elapsed:.2f}초)")
+                            print(f"  >> {text}")
+                            print("-" * 60)
+                    
+                    last_text = text
                 else:
                     print(f"({elapsed:.2f}초) [음성 감지 안됨]")
                 
