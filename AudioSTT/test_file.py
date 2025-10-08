@@ -159,11 +159,23 @@ def main():
     print(full_text)
     print()
     
-    # 세그먼트별 출력 (타임스탬프 포함)
+    # 세그먼트별 출력 (타임스탬프 포함) - 침묵/노이즈 필터링
     if "segments" in result and len(result["segments"]) > 0:
         print("【타임스탬프별 세그먼트】")
         print("-" * 60)
+        
+        # 필터링: "you", ".", 등 의미없는 세그먼트 제거
+        filtered_segments = []
         for seg in result["segments"]:
+            text = seg["text"].strip().lower()
+            # 무시할 패턴
+            if text in ["you", ".", ",", "?", "!", ""]:
+                continue
+            if len(text) < 3:  # 너무 짧은 텍스트
+                continue
+            filtered_segments.append(seg)
+        
+        for seg in filtered_segments:
             start = format_timestamp(seg["start"])
             end = format_timestamp(seg["end"])
             text = seg["text"].strip()
@@ -200,10 +212,15 @@ def main():
             f.write("타임스탬프별 세그먼트:\n\n")
             
             if "segments" in result:
+                # 파일 저장 시에도 필터링 적용
                 for seg in result["segments"]:
+                    text = seg["text"].strip()
+                    text_lower = text.lower()
+                    # 무시할 패턴
+                    if text_lower in ["you", ".", ",", "?", "!", ""] or len(text) < 3:
+                        continue
                     start = format_timestamp(seg["start"])
                     end = format_timestamp(seg["end"])
-                    text = seg["text"].strip()
                     f.write(f"[{start} --> {end}]\n")
                     f.write(f"{text}\n\n")
         

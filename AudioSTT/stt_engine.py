@@ -57,12 +57,16 @@ class WhisperSTT:
         if np.abs(audio).max() > 1.0:
             audio = audio / np.abs(audio).max()
         
-        # Whisper 변환
+        # Whisper 변환 (개선된 옵션)
         result = self.model.transcribe(
             audio,
             language=self.language,
             verbose=verbose,
-            fp16=(self.device == "cuda")  # GPU에서는 FP16 사용
+            fp16=(self.device == "cuda"),  # GPU에서는 FP16 사용
+            condition_on_previous_text=False,  # 이전 텍스트 의존성 제거 (환청 방지)
+            no_speech_threshold=0.8,  # 침묵 감지 임계값 (높을수록 엄격, 0.8로 강화)
+            logprob_threshold=-1.0,  # 낮은 확률 세그먼트 필터링
+            compression_ratio_threshold=2.4  # 반복 텍스트 감지
         )
         
         return result
