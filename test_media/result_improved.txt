@@ -1,0 +1,352 @@
+파일: ..\test_media\2020.1월_오픽.mp3
+모델: base
+언어: en
+길이: 2497.40초
+변환 시간: 137.34초
+
+============================================================
+전체 텍스트:
+Question number one. Let's start the interview. Can you tell me about yourself? you you you you Question number two. Please tell me about the banks in your country. When do they open and close? What do they look like? you you you you Question number 3. What do you usually do at the bank? Why do you go to the bank and what is your habit before going there? you you you you Question number 4. Banks have changed over the years. How were banks when you were young? How are they different from what they look like now? you you you you Question number 5. You indicated that you go to cafes or coffee shops. Describe what the coffee shop you go to often looks like. What is special about that place? you you you you Question number 6. What made you start going to your favorite cafe or coffee shop? What do you remember about your first visit to the cafe? What was your first impression like at the cafe? Please tell me in as much detail as possible. you you you you Question number 7. Tell me about a memorable incident that happened at a coffee shop. What happened? Who was involved? How did you deal with the situation? Tell me everything about what happened from beginning to end. you you you you Question number 8. I'd like to give you a situation and ask you to act it out. There's a newly open store. Call the store and ask the clerk two or three questions to get some information. you you you you Question number 9. I'm sorry, but there is a problem I need you to resolve. The clothes you have ordered have arrived, but one of them has a problem. Call the store and explain the situation. Give 2 to 3 alternatives to solve the problem. you you you you Question number 10. That's the end of the situation. Do you have any experience of being unhappy with something that you bought or some service you received? Perhaps, something could have had a scratch or something was not your order item. What was the problem, and how did you deal with the situation? Tell me everything in detail. you you you you Question number 11. You indicated in the survey that you take trips in your home country. Where do you like to visit and why do you like to go there? you you you you Question number 12. What do people do during their trips in your country? What are some things they do in order to prepare for trips? you you you you Question number 13. about a trip you went on in your childhood. What do you remember about that trip? Where did you go and whom did you go with? What made the trip special? you you you you Question number 14. Houses have changed over the years. How is the structure of the house is different from the past? you you you you Question number 15. Talk about the problems people have when they rent a house. Why do those problems occur and how do people solve those problems? you you you you you you
+
+============================================================
+타임스탬프별 세그먼트:
+
+[00:00:00.000 --> 00:00:16.860]
+Question number one.
+
+[00:00:16.860 --> 00:00:18.560]
+Let's start the interview.
+
+[00:00:18.560 --> 00:00:20.860]
+Can you tell me about yourself?
+
+[00:00:20.860 --> 00:00:22.860]
+you
+
+[00:00:50.860 --> 00:00:52.860]
+you
+
+[00:01:20.860 --> 00:01:22.860]
+you
+
+[00:01:50.860 --> 00:01:52.860]
+you
+
+[00:02:50.860 --> 00:02:57.860]
+Question number two. Please tell me about the banks in your country. When do they open and close? What do they look like?
+
+[00:03:20.860 --> 00:03:22.860]
+you
+
+[00:03:50.860 --> 00:03:52.860]
+you
+
+[00:04:20.860 --> 00:04:22.860]
+you
+
+[00:04:50.860 --> 00:04:52.860]
+you
+
+[00:05:20.860 --> 00:05:31.020]
+Question number 3.
+
+[00:05:31.020 --> 00:05:32.980]
+What do you usually do at the bank?
+
+[00:05:32.980 --> 00:05:35.740]
+Why do you go to the bank and what is your habit before going there?
+
+[00:05:50.860 --> 00:05:52.860]
+you
+
+[00:06:20.860 --> 00:06:22.860]
+you
+
+[00:06:50.860 --> 00:06:52.860]
+you
+
+[00:07:20.860 --> 00:07:22.860]
+you
+
+[00:07:50.860 --> 00:08:12.420]
+Question number 4. Banks have changed over the years. How were banks when you were young?
+
+[00:08:12.420 --> 00:08:15.420]
+How are they different from what they look like now?
+
+[00:08:20.860 --> 00:08:22.860]
+you
+
+[00:08:50.860 --> 00:08:52.860]
+you
+
+[00:09:20.860 --> 00:09:22.860]
+you
+
+[00:09:50.860 --> 00:09:52.860]
+you
+
+[00:10:20.860 --> 00:10:47.400]
+Question number 5.
+
+[00:10:47.400 --> 00:10:50.720]
+You indicated that you go to cafes or coffee shops.
+
+[00:10:50.720 --> 00:10:53.960]
+Describe what the coffee shop you go to often looks like.
+
+[00:10:53.960 --> 00:10:55.480]
+What is special about that place?
+
+[00:11:17.400 --> 00:11:19.400]
+you
+
+[00:11:47.400 --> 00:11:49.400]
+you
+
+[00:12:17.400 --> 00:12:19.400]
+you
+
+[00:12:47.400 --> 00:12:49.400]
+you
+
+[00:13:17.400 --> 00:13:28.800]
+Question number 6.
+
+[00:13:28.800 --> 00:13:32.160]
+What made you start going to your favorite cafe or coffee shop?
+
+[00:13:32.160 --> 00:13:35.280]
+What do you remember about your first visit to the cafe?
+
+[00:13:35.280 --> 00:13:38.040]
+What was your first impression like at the cafe?
+
+[00:13:38.040 --> 00:13:40.320]
+Please tell me in as much detail as possible.
+
+[00:13:47.400 --> 00:13:49.400]
+you
+
+[00:14:17.400 --> 00:14:19.400]
+you
+
+[00:14:47.400 --> 00:14:49.400]
+you
+
+[00:15:17.400 --> 00:15:19.400]
+you
+
+[00:15:47.400 --> 00:16:13.580]
+Question number 7.
+
+[00:16:13.580 --> 00:16:17.080]
+Tell me about a memorable incident that happened at a coffee shop.
+
+[00:16:17.080 --> 00:16:18.080]
+What happened?
+
+[00:16:18.080 --> 00:16:19.360]
+Who was involved?
+
+[00:16:19.360 --> 00:16:21.600]
+How did you deal with the situation?
+
+[00:16:21.600 --> 00:16:24.080]
+Tell me everything about what happened from beginning to end.
+
+[00:16:43.580 --> 00:16:45.580]
+you
+
+[00:17:13.580 --> 00:17:15.580]
+you
+
+[00:17:43.580 --> 00:17:45.580]
+you
+
+[00:18:13.580 --> 00:18:15.580]
+you
+
+[00:18:43.580 --> 00:18:57.140]
+Question number 8.
+
+[00:18:57.140 --> 00:19:00.580]
+I'd like to give you a situation and ask you to act it out.
+
+[00:19:00.580 --> 00:19:02.500]
+There's a newly open store.
+
+[00:19:02.500 --> 00:19:06.580]
+Call the store and ask the clerk two or three questions to get some information.
+
+[00:19:36.580 --> 00:19:38.580]
+you
+
+[00:20:06.580 --> 00:20:08.580]
+you
+
+[00:20:36.580 --> 00:20:38.580]
+you
+
+[00:21:06.580 --> 00:21:08.580]
+you
+
+[00:21:36.580 --> 00:21:39.420]
+Question number 9.
+
+[00:21:39.420 --> 00:21:42.860]
+I'm sorry, but there is a problem I need you to resolve.
+
+[00:21:42.860 --> 00:21:46.580]
+The clothes you have ordered have arrived, but one of them has a problem.
+
+[00:21:46.580 --> 00:21:49.060]
+Call the store and explain the situation.
+
+[00:21:49.060 --> 00:21:51.540]
+Give 2 to 3 alternatives to solve the problem.
+
+[00:22:06.580 --> 00:22:08.580]
+you
+
+[00:22:36.580 --> 00:22:38.580]
+you
+
+[00:23:06.580 --> 00:23:08.580]
+you
+
+[00:23:36.580 --> 00:23:38.580]
+you
+
+[00:24:06.580 --> 00:24:28.140]
+Question number 10. That's the end of the situation. Do you have any experience of being
+
+[00:24:28.140 --> 00:24:32.620]
+unhappy with something that you bought or some service you received? Perhaps, something
+
+[00:24:32.620 --> 00:24:35.900]
+could have had a scratch or something was not your order item.
+
+[00:24:35.900 --> 00:24:39.420]
+What was the problem, and how did you deal with the situation?
+
+[00:24:39.420 --> 00:24:40.700]
+Tell me everything in detail.
+
+[00:25:02.620 --> 00:25:04.620]
+you
+
+[00:25:32.620 --> 00:25:34.620]
+you
+
+[00:26:02.620 --> 00:26:04.620]
+you
+
+[00:26:32.620 --> 00:26:34.620]
+you
+
+[00:27:02.620 --> 00:27:13.780]
+Question number 11.
+
+[00:27:13.780 --> 00:27:17.420]
+You indicated in the survey that you take trips in your home country.
+
+[00:27:17.420 --> 00:27:20.020]
+Where do you like to visit and why do you like to go there?
+
+[00:27:32.620 --> 00:27:34.620]
+you
+
+[00:28:02.620 --> 00:28:04.620]
+you
+
+[00:28:32.620 --> 00:28:34.620]
+you
+
+[00:29:02.620 --> 00:29:04.620]
+you
+
+[00:29:32.620 --> 00:29:52.820]
+Question number 12.
+
+[00:29:52.820 --> 00:29:55.620]
+What do people do during their trips in your country?
+
+[00:29:55.620 --> 00:29:59.020]
+What are some things they do in order to prepare for trips?
+
+[00:30:02.620 --> 00:30:04.620]
+you
+
+[00:30:32.620 --> 00:30:34.620]
+you
+
+[00:31:02.620 --> 00:31:04.620]
+you
+
+[00:31:32.620 --> 00:31:34.620]
+you
+
+[00:32:02.620 --> 00:32:31.280]
+Question number 13.
+
+[00:32:31.280 --> 00:32:36.000]
+about a trip you went on in your childhood. What do you remember about that trip? Where did
+
+[00:32:36.000 --> 00:32:39.360]
+you go and whom did you go with? What made the trip special?
+
+[00:33:01.280 --> 00:33:03.280]
+you
+
+[00:33:31.280 --> 00:33:33.280]
+you
+
+[00:34:01.280 --> 00:34:03.280]
+you
+
+[00:34:31.280 --> 00:34:33.280]
+you
+
+[00:35:01.280 --> 00:35:11.840]
+Question number 14.
+
+[00:35:11.840 --> 00:35:14.800]
+Houses have changed over the years.
+
+[00:35:14.800 --> 00:35:17.360]
+How is the structure of the house is different from the past?
+
+[00:35:31.280 --> 00:35:33.280]
+you
+
+[00:36:01.280 --> 00:36:03.280]
+you
+
+[00:36:31.280 --> 00:36:33.280]
+you
+
+[00:37:01.280 --> 00:37:03.280]
+you
+
+[00:37:31.280 --> 00:37:56.280]
+Question number 15. Talk about the problems people have when they rent a house. Why do those problems occur and how do people solve those problems?
+
+[00:38:01.280 --> 00:38:03.280]
+you
+
+[00:38:31.280 --> 00:38:33.280]
+you
+
+[00:39:01.280 --> 00:39:03.280]
+you
+
+[00:39:31.280 --> 00:39:33.280]
+you
+
+[00:40:31.280 --> 00:40:33.280]
+you
+
+[00:41:01.280 --> 00:41:03.280]
+you
+
