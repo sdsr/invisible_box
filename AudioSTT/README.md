@@ -9,6 +9,8 @@ PC에서 나오는 소리를 실시간으로 캡처하여 OpenAI Whisper 모델�
 - 다국어 지원 (한국어, 영어 등)
 - 슬라이딩 윈도우 방식 실시간 처리
 - GPU 가속 지원 (CUDA)
+- **NEW!** OPIC 자동 답변 시스템 (Gemini AI)
+- **NEW!** VAD 기반 자동 음성 구간 감지
 
 ## 설치 방법
 
@@ -39,6 +41,60 @@ pip install torch torchvision torchaudio
 ```
 
 ## 사용 방법
+
+### OPIC 자동 답변 시스템 (NEW!)
+
+#### 1. Gemini API 키 발급
+1. https://makersuite.google.com/app/apikey 접속
+2. "Create API Key" 클릭
+3. API 키 복사
+
+#### 2. API 키 설정
+```bash
+# Windows
+set GEMINI_API_KEY=your_api_key_here
+
+# 또는 실행 시 인자로
+python opic_assistant.py --gemini-api-key your_api_key_here
+```
+
+#### 3. 실행
+```bash
+cd AudioSTT
+
+# 영어 OPIC
+python opic_assistant.py --language en --stt-model base
+
+# 한국어 OPIC
+python opic_assistant.py --language ko --stt-model base
+
+# 로그 저장
+python opic_assistant.py --language en --save-log opic_log.txt
+```
+
+#### 동작 방식
+1. OPIC 문제 음성 재생 (YouTube, mp3 등)
+2. 질문이 끝나면 자동으로 STT 변환
+3. Gemini가 자연스러운 답변 생성
+4. 화면에 질문+답변 출력
+5. 이전 답변 문맥 유지 (일관성)
+
+#### 출력 예시
+```
+【질문 1】 (언어: EN)
+Can you tell me about yourself?
+
+답변 생성 중... (1.23초)
+
+【답변 1】
+Well, I'm currently a software developer working in Seoul. 
+I've been programming for about 5 years now, and I really 
+enjoy creating applications that help people. In my free time, 
+I like to read technical books and contribute to open-source 
+projects. I also enjoy hiking on weekends with my friends.
+
+============================================================
+```
 
 ### 방법 1: 자동 PC 오디오 캡처 (권장, Windows 전용)
 

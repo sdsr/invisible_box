@@ -12,3 +12,14 @@
 # 기타
 *.log
 *.tmp
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.env
+.venv/
+venv/
+
+# API 키 / 민감 정보
+AudioSTT/.env

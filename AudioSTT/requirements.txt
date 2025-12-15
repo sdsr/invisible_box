@@ -3,6 +3,8 @@ sounddevice==0.4.6
 numpy==1.24.3
 scipy==1.11.4
 pyaudiowpatch>=0.2.12.3  # WASAPI 루프백 지원 (Windows 전용)
+google-generativeai>=0.3.0  # Gemini API
+python-dotenv>=1.0.0  # .env 파일 로딩
 
 # 파일 테스트용 (선택 설치)
 # 다음 중 하나 이상 필요:
